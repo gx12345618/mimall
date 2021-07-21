@@ -22,23 +22,23 @@ export default new Router({
     routes: [
         {
             path: '/',
-            home: 'home',
+            name: 'home',
             redirect: '/index',
             component: Home,
             children: [
                 {
                     path: '/index',
-                    home: 'index',
+                    name: 'index',
                     component: Index,
                 }, {
                     // 动态路由 根据商品详情来加载页面信息 /:id
                     path: '/product/:id',
-                    home: 'product',
+                    name: 'product',
                     // component: resolve => require(['./pages/index.vue'], resolve),
                     component: () => import('./pages/product.vue')
                 }, {
                     path: '/detail/:id',
-                    home: 'detail',
+                    name: 'detail',
                     component: () => import('./pages/detail.vue')
                 },
                 
@@ -46,37 +46,37 @@ export default new Router({
         },
         {
             path: '/login',
-            home: 'login',
+            name: 'login',
             component: () => import('./pages/login.vue')
         },
         {
             path: '/cart',
-            home: 'cart',
+            name: 'cart',
             component: () => import('./pages/cart.vue')
         },
         {
             path: '/order',
-            home: 'order',
+            name: 'order',
             component: () => import('./pages/order.vue'),
             children: [
                 {
                     path: 'confirm',
-                    home: 'order-confirm',
+                    name: 'order-confirm',
                     component: () => import('./pages/orderConfirm.vue')
                 },
                 {
                     path: 'list',
-                    home: 'order-list',
+                    name: 'order-list',
                     component: () => import('./pages/orderList.vue')
                 },
                 {
                     path: 'pay',
-                    home: 'order-pay',
+                    name: 'order-pay',
                     component: () => import('./pages/orderPay.vue')
                 },
                 {
                     path: 'alipay',
-                    home: 'alipay',
+                    name: 'alipay',
                     component: () => import('./pages/alipay.vue')
                 },
             ]
