@@ -1,0 +1,67 @@
+@import './mixin.scss';
+.container {
+  // 作为边界，绝对定位就相对于它来定位
+  position: relative;
+  width: 1226px;
+  // 设置居中
+  margin-left: auto;
+  margin-right: auto;
+}
+a {
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+input{
+  outline: none;
+  // 设置成border-box，宽度就包括了边框值
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.clearfix:before,.clearfix:after{
+  content: ' ';
+  display: table;
+}
+.clearfix:after{
+  clear: both;
+}
+// 公共的logo
+.header-logo {
+  background-color: #ff6600;
+  display: inline-block;
+  // 可视化宽高
+  width: 55px;
+  height: 55px;
+  // 用before伪类  用before after设置两者图片
+  // css设置伪类 a:before
+  a {
+    display: inline-block;
+    width: 110px;
+    height: 55px;
+    // 为了简化 scss设置伪类
+    &:before {
+      content: " ";
+      // 抽离出去
+      @include bgImg(55px, 55px, "/imgs/mi-logo.png", 55px);
+      // 移出时也带有动画
+      transition: margin 0.2s;
+    }
+    &:after {
+      // content必须写 起占位的作用
+      content: " ";
+      @include bgImg(55px, 55px, "/imgs/mi-home.png", 55px);
+    }
+    &:hover:before {
+      margin-left: -55px;
+      // 移入时带有动画
+      transition: margin 0.2s;
+    }
+  }
+}
