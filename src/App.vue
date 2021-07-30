@@ -22,7 +22,8 @@ export default {
   },
   methods: {
     getUser() {
-      this.axios.get("/user").then((res) => {
+      // 未登录时res为undefined 为防止报错 给一个空对象
+      this.axios.get("/user").then((res={}) => {
         // 保存到vuex里面
         this.$store.dispatch('saveUserName',res.username);
       });
