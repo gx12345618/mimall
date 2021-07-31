@@ -29,7 +29,8 @@ export default {
       });
     },
     getCartCount() {
-      this.axios.get("/carts/products/sum").then((res) => {
+      // 没有登录 保证购物车数量为0
+      this.axios.get("/carts/products/sum").then((res=0) => {
         this.$store.dispatch('saveCartCount',res);
       });
     },
